@@ -158,7 +158,11 @@ public class PrimitivStreamOperations {
 		
 		long count = words.stream().map(w -> w.split("")).flatMap(Arrays::stream)
 				.filter(PrimitivStreamOperations::checkspecialChar).count();
-		System.out.println("!!! spcial character count in the text is:" + count);
+		System.out.println("!!! special character count in the text is:" + count);
+		
+		long count1 = words.stream().map(w -> w.split("")).flatMap(Arrays::stream)
+				.filter(s-> s.length()>0 ).map(c-> c.charAt(0)).filter(c-> !(Character.isAlphabetic(c)|| Character.isDigit(c))).count();
+		System.out.println("!!! special character count in the text is:" + count1);
 
 		/*
 		 * infinite stream using Stream.iterate() even numbers using infinite integer

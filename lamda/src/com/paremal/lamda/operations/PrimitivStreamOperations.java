@@ -204,18 +204,18 @@ public class PrimitivStreamOperations {
 	}
 
 	public static boolean checkspecialChar(String s) {
-		boolean result = true;
+		
 		Character c = null;
 		if (s.length() < 1)
-			result = false;
+			return false;
 		else {
 			c = s.charAt(0);
 
 			if (Character.isAlphabetic(c) || Character.isDigit(c))
-				result = false;
+				return false;
 
 		}
-		return result;
+		return true;
 	}
 	public static boolean checkspecialChar1(String s) {
 		Character c = s.charAt(0);

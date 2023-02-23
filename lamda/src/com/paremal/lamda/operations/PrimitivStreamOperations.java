@@ -154,12 +154,18 @@ public class PrimitivStreamOperations {
 				.collect(Collectors.toMap(Function.identity(), v -> 1, Integer::sum)).entrySet().stream()
 				.sorted(Map.Entry.comparingByValue())
 				.forEach(entry -> System.out.println("char: " + entry.getKey() + " " + entry.getValue() + " times"));
-
 		
+		/*
+		 * Counting special characters using separate custom method
+		 */
 		long count = words.stream().map(w -> w.split("")).flatMap(Arrays::stream)
 				.filter(PrimitivStreamOperations::checkspecialChar).count();
 		System.out.println("!!! special character count in the text is:" + count);
 		
+		
+		/*
+		 * counting special characters using pipelined intermediate methods
+		 */
 		long count1 = words.stream().map(w -> w.split("")).flatMap(Arrays::stream)
 				.filter(s-> s.length()>0 ).map(c-> c.charAt(0)).filter(c-> !(Character.isAlphabetic(c)|| Character.isDigit(c))).count();
 		System.out.println("!!! special character count in the text is:" + count1);
